@@ -18,4 +18,5 @@ class BillingService:
         try:
             return self.gateway.refund(transaction_id)
         except Exception:
-            pass
+            logger.exception("Refund failed for transaction %s", transaction_id)
+            raise
